@@ -1,6 +1,6 @@
 ﻿namespace CO435_WinFormsAnswer
 {
-    partial class RPS_GameForm
+    partial class GameForm
     {
         /// <summary>
         ///  Required designer variable.

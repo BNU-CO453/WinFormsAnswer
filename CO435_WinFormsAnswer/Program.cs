@@ -1,3 +1,4 @@
+using CO435_WinFormsAnswer.App07;
 using System;
 using System.Windows.Forms;
 
@@ -15,7 +16,7 @@ namespace CO435_WinFormsAnswer
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new RPS_GameForm());
+            Application.Run(new SimulatorForm());
         }
     }
 }

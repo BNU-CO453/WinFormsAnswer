@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace CO435_WinFormsAnswer
 {
-    public partial class RPS_GameForm : Form
+    public partial class GameForm : Form
     {
         private Bitmap rockBitmap = new Bitmap(Resources.Rock);
         private Bitmap paperBitmap = new Bitmap(Resources.Paper);
@@ -13,7 +13,7 @@ namespace CO435_WinFormsAnswer
 
         private Game game = new Game("Player");
         
-        public RPS_GameForm()
+        public GameForm()
         {
             InitializeComponent();
 
