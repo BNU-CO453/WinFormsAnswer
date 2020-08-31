@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
@@ -14,14 +11,16 @@ namespace CO435_WinFormsAnswer.App07
 
         private readonly FieldStats stats = new FieldStats();
 
+        private Bitmap canvas;
         public SimulatorForm()
         {
             InitializeComponent();
-            RunSimulator();
 
+            canvas = new Bitmap(fieldPanel.Width, fieldPanel.Height);
+            fieldPanel.BackgroundImage = canvas;
         }
 
-        private void RunSimulator()
+        private void RunSteps(object sender, EventArgs e)
         {
             int lastStep = (int)stepsNumericUpDown.Value;
 
@@ -30,14 +29,20 @@ namespace CO435_WinFormsAnswer.App07
                 simulator.SimulateOneStep();
 
                 CountAnimals();
-                string result = stats.GetPopulationDetails(simulator.Field);
+                ShowStats();
 
-                rabbitLabel.Text = "Rabbits: " + stats.GetAnimalCount("Rabbit");
-                foxLabel.Text = "Foxes: " + stats.GetAnimalCount("Fox");
+                Thread.Sleep(100);
+                Refresh();
             }
+        }
 
-            Refresh();
+        private void ShowStats()
+        {
+            string result = stats.GetPopulationDetails(simulator.Field);
 
+            stepLabel.Text = $"Step: {simulator.GetStep()}";
+            rabbitLabel.Text = "Rabbits: " + stats.GetAnimalCount("Rabbit");
+            foxLabel.Text = "Foxes: " + stats.GetAnimalCount("Fox");
         }
 
         public void CountAnimals()
@@ -60,13 +65,15 @@ namespace CO435_WinFormsAnswer.App07
             stats.CountFinished();
         }
 
-        private void SimulatorForm_Paint(object sender, PaintEventArgs e)
+        /// <summary>
+        /// Called every time the screen is refreshed (painted)
+        /// </summary>
+        private void DrawField(object sender, PaintEventArgs e)
         {
-        }
+            //Graphics g = e.Graphics;
+            Graphics g = Graphics.FromImage(canvas);
 
-        private void fieldPanel_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
 
             int x = 0, y = 0; int size = 10;
 
@@ -94,11 +101,6 @@ namespace CO435_WinFormsAnswer.App07
                 y += size;
             }
 
-        }
-
-        private void stepButton_Click(object sender, EventArgs e)
-        {
-            RunSimulator();
         }
     }
 }

@@ -35,6 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.stepsNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
+            this.stepLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.stepsNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +48,7 @@
             this.fieldPanel.Name = "fieldPanel";
             this.fieldPanel.Size = new System.Drawing.Size(800, 600);
             this.fieldPanel.TabIndex = 0;
-            this.fieldPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.fieldPanel_Paint);
+            this.fieldPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawField);
             // 
             // stepButton
             // 
@@ -58,12 +59,12 @@
             this.stepButton.TabIndex = 1;
             this.stepButton.Text = "Run";
             this.stepButton.UseVisualStyleBackColor = true;
-            this.stepButton.Click += new System.EventHandler(this.stepButton_Click);
+            this.stepButton.Click += new System.EventHandler(this.RunSteps);
             // 
             // rabbitLabel
             // 
             this.rabbitLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rabbitLabel.Location = new System.Drawing.Point(822, 66);
+            this.rabbitLabel.Location = new System.Drawing.Point(822, 134);
             this.rabbitLabel.Name = "rabbitLabel";
             this.rabbitLabel.Size = new System.Drawing.Size(163, 32);
             this.rabbitLabel.TabIndex = 3;
@@ -72,7 +73,7 @@
             // foxLabel
             // 
             this.foxLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.foxLabel.Location = new System.Drawing.Point(822, 118);
+            this.foxLabel.Location = new System.Drawing.Point(822, 186);
             this.foxLabel.Name = "foxLabel";
             this.foxLabel.Size = new System.Drawing.Size(163, 32);
             this.foxLabel.TabIndex = 4;
@@ -116,11 +117,21 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Steps";
             // 
+            // stepLabel
+            // 
+            this.stepLabel.AutoSize = true;
+            this.stepLabel.Location = new System.Drawing.Point(823, 87);
+            this.stepLabel.Name = "stepLabel";
+            this.stepLabel.Size = new System.Drawing.Size(79, 30);
+            this.stepLabel.TabIndex = 8;
+            this.stepLabel.Text = "Step: 0";
+            // 
             // SimulatorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1082, 723);
+            this.Controls.Add(this.stepLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.stepsNumericUpDown);
             this.Controls.Add(this.label1);
@@ -128,11 +139,11 @@
             this.Controls.Add(this.rabbitLabel);
             this.Controls.Add(this.stepButton);
             this.Controls.Add(this.fieldPanel);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "SimulatorForm";
             this.Text = "Derek\'s Rabbits & Foxes Simulation";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.SimulatorForm_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.stepsNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -148,5 +159,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown stepsNumericUpDown;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label stepLabel;
     }
 }
