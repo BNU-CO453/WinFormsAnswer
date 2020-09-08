@@ -17,7 +17,7 @@ namespace CO435_WinFormsAnswer.App07
         // The age at which a rabbit can start to breed.
         private const int BREEDING_AGE = 5;
         // The age to which a rabbit can live.
-        private const int MAX_AGE = 40;
+        private const int MAX_AGE = 24;
         // The likelihood of a rabbit breeding.
         private const double BREEDING_PROBABILITY = 0.12;
         // The maximum number of births.

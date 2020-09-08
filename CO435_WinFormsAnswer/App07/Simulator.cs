@@ -14,6 +14,7 @@ namespace CO435_WinFormsAnswer.App07
     public class Simulator
     {
         // Constants representing configuration information for the simulation.
+        
         // The default width for the grid.
         private const int DEFAULT_WIDTH = 80;
         // The default depth of the grid.
@@ -21,6 +22,7 @@ namespace CO435_WinFormsAnswer.App07
         
         // The probability that a fox will be created in any given grid position.
         private const double FOX_CREATION_PROBABILITY = 0.02;
+        
         // The probability that a rabbit will be created in any given position.
         private const double RABBIT_CREATION_PROBABILITY = 0.08;
 
@@ -61,14 +63,9 @@ namespace CO435_WinFormsAnswer.App07
 
             rabbits = new List<Rabbit>();
             foxes = new List<Fox>();
+
             Field = new Field(depth, width);
 
-            // Create a view of the state of each location in the field.
-            //view = new SimulatorView(depth, width);
-            //view.setColor(Rabbit.class, Color.ORANGE);
-            //view.setColor(Fox.class, Color.BLUE);
-
-            // Setup a valid starting point.
             Reset();
         }
 
